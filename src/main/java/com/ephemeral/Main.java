@@ -4,11 +4,17 @@ import javax.swing.*;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 
+/**
+ * @version 0.0.1
+ * Created by MDCCLXXVI on 5/27/14.
+ */
 public class Main extends JFrame { // we use sxtends to create more specialised classes
 
     /**
@@ -35,6 +41,10 @@ public class Main extends JFrame { // we use sxtends to create more specialised 
 
 
         final Main c = new Main(); //c.lever();// lever();
+        String callhome = c.reverse_REC("HELLOWORLD");
+        System.out.println(String.format("%s\n\n",callhome));
+
+        reverse$d$();
         c.DogTrack(47);
 
 
@@ -729,7 +739,7 @@ public class Main extends JFrame { // we use sxtends to create more specialised 
         return first + temp2 + middle + temp1 + last;
     }
     
-    String reverse(String snore){
+    public static String reverse(String snore){
 
         char []expa = new char[snore.length()];
 
@@ -740,6 +750,26 @@ public class Main extends JFrame { // we use sxtends to create more specialised 
         }
 
         return String.valueOf(expa);
+    }
+
+
+
+    public static String reverse_REP(String str){ //recursive methods
+        char []book = new char[str.length()];
+
+
+
+        String strike = str;
+        int number = strike.length()-1;
+
+
+        if(number == 0){
+            return str;//String.valueOf(strike.substring(0,1));
+        }
+        number--;
+
+        return reverse_REP(strike.substring(number-1, number));
+        //return str.
     }
 
     int fibonacci(int n){
@@ -755,6 +785,8 @@ public class Main extends JFrame { // we use sxtends to create more specialised 
         return sum;
 
     }
+
+
 
     String [] diamond(int limit){
         int count = limit -1;
@@ -863,12 +895,7 @@ public class Main extends JFrame { // we use sxtends to create more specialised 
 
     }
 
-    public static String reverse_REC(String str){ //recursive methods
-        String []book = new String[str.length()];
 
-        return reverse_REC(str) + str.charAt(str.length()-1);
-        //return str.
-    }
 
     public static void write_binarysort(int[] array, int searched){
         //int []sorted = new int[array.length];
@@ -1166,6 +1193,141 @@ public class Main extends JFrame { // we use sxtends to create more specialised 
         URL go = new URL(str);
         Scanner in = new Scanner(go.openStream());
     }
+
+    public static double[] readFile(String files_name) throws IOException {
+        File infile = new File(files_name);
+        Scanner in = new Scanner(infile);
+
+        try{
+            int SIZE = 0;
+            while(in.hasNextInt()){
+                SIZE = in.nextInt(); // May throw NoSuchElementException
+            }
+
+            double[] ledger = new double[SIZE];
+            int i = 0;
+            while (in.hasNextDouble()) {
+            ledger[i] = in.nextDouble(); // May throw NoSuchElementException
+            i++;
+            }
+
+            if(in.hasNext()){
+                throw new IOException("End of file expected");
+            }
+
+            return ledger;
+        }
+        finally {
+            in.close();
+        }
+    }
+
+    public static void p7_1 () throws FileNotFoundException {
+        boolean track = false;
+        while(!track) {
+            try {
+                String filename = "hello.txt";
+                PrintWriter write = new PrintWriter(filename);
+
+                try {
+                    write.println("Hello World!");
+                } finally {
+                    write.close();
+                }
+            } catch (FileNotFoundException exception) {
+                System.out.println(exception.getMessage());
+            }
+            track = true;
+        }
+
+        try {
+            String filename = "hello.txt";
+            File infile = new File(filename);
+            Scanner in = new Scanner(infile);
+            try {
+                while (in.hasNextLine()) {
+                    System.out.println(in.hasNext());
+                }
+            } finally {
+                in.close();
+            }
+        }
+        catch(FileNotFoundException exception){
+            System.out.println(exception.getMessage());
+        }
+        catch(NoSuchElementException exception){
+            System.out.println(exception.getMessage());
+        }
+    }
+
+    public static void p7_2() throws FileNotFoundException {
+        try{
+            String filename = "fables.txt";
+            Scanner in = new Scanner(new File(filename));
+            PrintWriter write = new PrintWriter("edit.dat");
+            int i = 1;
+            while(in.hasNextLine()){
+                write.println(String.format("/* %d */ %s",i,in.nextLine()));
+                i++;
+            }
+
+            write.close();
+            in.close();
+        }
+        catch (FileNotFoundException exception){
+            System.out.println(exception.getMessage());
+        }
+
+
+    }
+
+    public static void reverse$d$() throws FileNotFoundException {
+
+        String fn = "carbon.txt";
+        Scanner in = new Scanner(new File (fn));
+
+        try{
+            run_through_file_lines(in);
+        }
+        finally{
+           closed(in);
+        }
+
+        //run
+
+
+
+
+    }
+
+    public static void run_through_file_lines(Scanner in){
+        while(in.hasNextLine()){
+            System.out.println(String.format("%s",reverse(in.nextLine())));
+        }
+    }
+    public static void closed(Scanner in){
+        in.close();
+    }
+
+    public static String reverse_REC(String str){ //recursive methods
+        if(str.length() == 1){
+            return str;
+        }
+        return str.charAt(str.length() - 1) + reverse(str.substring(0, str.length() - 1));
+    }
+
+    public static String recursively_reverse(String thread){
+        if(thread.length() ==1){ // the LENGTH of thread will decrement by ONE each call until ONE REMAINS.
+            return "";
+        }
+        return thread.charAt(thread.length()-1) + recursively_reverse(
+                                                                            thread.substring(
+                                                                                                0,thread.length()-1));
+                                                                                                // each recursive call:
+                                                                                                // 0 ==> the NEW LENGTH
+    }
+
+
 
 
     /**
