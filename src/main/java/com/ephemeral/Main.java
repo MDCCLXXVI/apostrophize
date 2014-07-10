@@ -41,6 +41,9 @@ public class Main extends JFrame { // we use sxtends to create more specialised 
 
 
         final Main c = new Main(); //c.lever();// lever();
+        Counter jackson = new Counter();
+        jackson.increment();jackson.increment();jackson.increment();jackson.increment();
+        System.out.println("Count is now: "+jackson.getMarker());
         String callhome = c.reverse_REC("HELLOWORLD");
         System.out.println(String.format("%s\n\n",callhome));
 
@@ -768,7 +771,7 @@ public class Main extends JFrame { // we use sxtends to create more specialised 
         }
         number--;
 
-        return reverse_REP(strike.substring(number-1, number));
+        return reverse_REP(strike.substring(number - 1, number));
         //return str.
     }
 
@@ -1320,12 +1323,14 @@ public class Main extends JFrame { // we use sxtends to create more specialised 
         if(thread.length() ==1){ // the LENGTH of thread will decrement by ONE each call until ONE REMAINS.
             return "";
         }
-        return thread.charAt(thread.length()-1) + recursively_reverse(
+        return thread.charAt(thread.length() - 1) + recursively_reverse(
                                                                             thread.substring(
                                                                                                 0,thread.length()-1));
                                                                                                 // each recursive call:
                                                                                                 // 0 ==> the NEW LENGTH
     }
+
+
 
 
 

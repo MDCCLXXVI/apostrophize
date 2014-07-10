@@ -23,5 +23,12 @@ public class JavaRecursion {
         }
     }
 
+    String verser(String word){
+        if(word.length() == 1){
+            return  word;
+        }
+        return word.charAt(0) + verser(word.substring(0, word.length()-1));
+    }
+
 
 }
