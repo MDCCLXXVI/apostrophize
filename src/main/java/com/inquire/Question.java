@@ -48,6 +48,11 @@ public class Question {
         System.out.println(txt);
     }
 
+    @Override
+    public String toString(){
+        return String.format("%s[text=%s][answer=%s]",getClass().getName(), getTxt(), getAnswer());
+    }
+
 
 
 }

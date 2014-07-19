@@ -72,4 +72,9 @@ public class ChoiceQuestion extends Question {
             System.out.println(array[i]);
         }
     }
+
+    @Override
+    public String toString(){
+        return String.format("%s,[choiceArr=%s]",super.toString(), String.valueOf(choiceArr));
+    }
 }
