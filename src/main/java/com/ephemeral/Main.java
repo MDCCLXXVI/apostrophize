@@ -1,5 +1,8 @@
 package com.ephemeral;
 
+import com.inquire.*;
+import com.invest.*;
+
 import javax.swing.*;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -33,6 +36,87 @@ public class Main extends JFrame { // we use sxtends to create more specialised 
         final Aguatic  a = new Aguatic(9.0, 3.0);
         final Tile stewie = new Tile();
 
+        //
+        ChoiceQuestion kay = new AnyCorrectChoiceQuestion(4);
+        kay.setTxt("In which country was the inventor of Java born?");
+        kay.addChoice();
+        kay.saySomething();
+        Scanner inlet = new Scanner(System.in);
+        System.out.println("Please enter your choice here: ");
+        System.out.println("Expected: "+ kay.getAnswer());
+
+        System.out.println("Selected answer is "+ String.valueOf(kay.checkAns(inlet.nextLine())));
+        //System.out.println("Expected: "+ kay.getAnswer());
+
+
+
+        NumericQuestion nero = new NumericQuestion();
+        nero.setTxt("Evaluate 1 / 3");
+        nero.setAnswer("1.333");
+        System.out.println(nero.getTxt());
+        System.out.println("Answer: ");
+        inlet = new Scanner(System.in);
+        System.out.println("Selected answer is "+ String.valueOf(nero.checkAns(inlet.nextLine())));
+        System.out.println("Expected:\n"+ nero.getAnswer());
+
+
+
+
+
+
+        FillInQuestion trist = new FillInQuestion();
+        trist.setTxt("The inventor of Java was");
+        trist.setAnswer("James Gosling");
+        System.out.println(trist.getTxt());
+        System.out.println("Answer: ");
+        inlet = new Scanner(System.in);
+
+        System.out.println("Selected answer is "+ String.valueOf(trist.checkAns(inlet.nextLine())));
+        System.out.println("Expected:\n"+ trist.getAnswer());
+
+
+
+        Account aircraftcarrier;
+        aircraftcarrier = new SavingsAccount(100);
+        aircraftcarrier.deposit(823);
+        aircraftcarrier.deposit(13);
+        aircraftcarrier.deposit(242);
+        aircraftcarrier.month_end(aircraftcarrier);
+
+        CheckingAccount predator = new CheckingAccount(200);
+        predator.withdrawal(50);
+        predator.withdrawal(3);
+        predator.withdrawal(73.32);
+        predator.withdrawal(5);
+        predator.deposit(200);
+        predator.month_end(predator);
+        System.out.println("toString()-> " + predator.toString());
+        System.out.println(String.format("\n\n\n"));
+
+        ChoiceQuestion terry = new ChoiceQuestion(4);
+        terry.setTxt("In which country was the inventor of Java born?");
+        terry.addChoice();
+        terry.saySomething();
+        Scanner checking = new Scanner(System.in);
+        System.out.println("Please enter your choice here: ");
+        System.out.println("Selected answer is "+ String.valueOf(terry.checkAns(checking.nextLine())));
+        System.out.println("Expected: "+ terry.getAnswer());
+
+
+
+        Fish nemo = new Fish();
+        nemo.move();
+        nemo.move();
+        nemo.move();
+
+
+
+        MenuClass aria = new MenuClass();
+        aria.selectChoice();
+
+
+
+
 
         JavaRecursion selma = new JavaRecursion();
         int n = selma.getTriNumber(6);
@@ -49,7 +133,6 @@ public class Main extends JFrame { // we use sxtends to create more specialised 
 
         reverse$d$();
         c.DogTrack(47);
-
 
 
 
@@ -1115,13 +1198,13 @@ public class Main extends JFrame { // we use sxtends to create more specialised 
      * @param dogArray collection of dog objects
      * @param i represents a specific canine at ith index
      */
-    public static void drone(DogTag []dogArray, int i){
+    private static void drone(DogTag []dogArray, int i){
         if(!dogArray[i].track[reset(dogArray[i].lucky, dogArray[i].x)].equals("o")){dogArray[i].track[reset(dogArray[i].lucky, dogArray[i].x)] += dogArray[i].init;}
         else{dogArray[i].track[reset(dogArray[i].lucky, dogArray[i].x)] = dogArray[i].init;}
         System.out.println(Arrays.toString(dogArray[i].track));
     }
 
-    public static boolean central_intelligence(DogTag[] dogArray, int i) throws FileNotFoundException {
+    private static boolean central_intelligence(DogTag[] dogArray, int i) throws FileNotFoundException {
         boolean fall = false;
         int advance = (int)((Math.random() * dogArray[i].x)/4)+1;
         int capture = dogArray[i].lucky;
@@ -1148,12 +1231,12 @@ public class Main extends JFrame { // we use sxtends to create more specialised 
     }
 
 
-    public static int reset (int lucky, int x){
+    private static int reset (int lucky, int x){
         if(lucky == x/3 || lucky == (2*x)/3){ lucky = 0;}
         return lucky;
     }
 
-    public static String[] reimagine(String []autofill){
+    private static String[] reimagine(String []autofill){
         int random = (int)(Math.random() * autofill.length);
         int random_2 = (int)(Math.random() * autofill.length);
         int random_3 = (int)(Math.random() * autofill.length);
@@ -1171,7 +1254,7 @@ public class Main extends JFrame { // we use sxtends to create more specialised 
         return replacements;
     }
 
-    public static void initToName(DogTag[] dogArray, int i){
+    private static void initToName(DogTag[] dogArray, int i){
         if(dogArray[i].init.equals("F")){
             dogArray[i].init += "ido";
         } else if(dogArray[i].init.equals("S")){
@@ -1182,7 +1265,7 @@ public class Main extends JFrame { // we use sxtends to create more specialised 
         System.out.println(dogArray[i].init+" wins!");
     }
 
-    public static void draw(DogTag[] dogArray, int adv_lngth){
+    private static void draw(DogTag[] dogArray, int adv_lngth){
         String line="";
         for (int i = 0; i < adv_lngth; i++) {
             line+="_";

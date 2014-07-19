@@ -23,7 +23,7 @@ public class JavaRecursion {
         }
     }
 
-    String verser(String word){
+    public static String verser(String word){
         if(word.length() == 1){
             return  word;
         }
