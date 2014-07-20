@@ -7,6 +7,7 @@ import java.awt.*;
  */
 public class BetterRectangle extends Rectangle {
     BetterRectangle(int x, int y){
+        super();
         setLocation(x, y);
         setSize(x, y);
     }
