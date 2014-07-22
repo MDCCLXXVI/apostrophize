@@ -34,8 +34,6 @@ public class Main extends JFrame { // we use sxtends to create more specialised 
 
         //new Main();
         final Aguatic  a = new Aguatic(9.0, 3.0);
-        final Aguatic  zsgdfhjkl = new Aguatic(9.0, 3.0);
-
         final Tile stewie = new Tile();
 
         //
